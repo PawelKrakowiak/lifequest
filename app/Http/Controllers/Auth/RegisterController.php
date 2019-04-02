@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace Lifequest\app\Http\Controllers\Auth;
 
-use App\User;
-use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Lifequest\app\Http\Controllers\Controller;
+use Lifequest\app\User;
 
 class RegisterController extends Controller
 {
@@ -59,7 +59,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \Lifequest\app\User
      */
     protected function create(array $data)
     {
