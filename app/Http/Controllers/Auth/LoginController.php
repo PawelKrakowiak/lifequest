@@ -5,6 +5,10 @@ namespace Lifequest\app\Http\Controllers\Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Lifequest\app\Http\Controllers\Controller;
 
+/**
+ * Class LoginController
+ * @package Lifequest\app\Http\Controllers\Auth
+ */
 class LoginController extends Controller
 {
     /*

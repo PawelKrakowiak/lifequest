@@ -2,7 +2,10 @@
 
 namespace Lifequest\app\Model;
 
+use Eloquent;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 
 /**
  * Lifequest\app\Model\Quest
@@ -11,20 +14,25 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $title
  * @property int $projectId
  * @property int $isCompleted
- * @property \Illuminate\Support\Carbon|null $createdAt
- * @property \Illuminate\Support\Carbon|null $updatedAt
- * @method static \Illuminate\Database\Eloquent\Builder|\Lifequest\app\Model\Quest newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Lifequest\app\Model\Quest newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\Lifequest\app\Model\Quest query()
- * @method static \Illuminate\Database\Eloquent\Builder|\Lifequest\app\Model\Quest whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Lifequest\app\Model\Quest whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Lifequest\app\Model\Quest whereIsCompleted($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Lifequest\app\Model\Quest whereProjectId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Lifequest\app\Model\Quest whereTitle($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\Lifequest\app\Model\Quest whereUpdatedAt($value)
- * @mixin \Eloquent
+ * @property Carbon|null $createdAt
+ * @property Carbon|null $updatedAt
+ *
+ * @method static Builder|Quest newModelQuery()
+ * @method static Builder|Quest newQuery()
+ * @method static Builder|Quest query()
+ * @method static Builder|Quest whereCreatedAt($value)
+ * @method static Builder|Quest whereId($value)
+ * @method static Builder|Quest whereIsCompleted($value)
+ * @method static Builder|Quest whereProjectId($value)
+ * @method static Builder|Quest whereTitle($value)
+ * @method static Builder|Quest whereUpdatedAt($value)
+ *
+ * @mixin Eloquent
  */
 class Quest extends Model
 {
+    /** @var string */
+    protected $table = 'projects';
+
     protected $fillable = ['title', 'project_id'];
 }

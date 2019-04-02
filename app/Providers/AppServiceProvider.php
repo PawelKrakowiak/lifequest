@@ -5,6 +5,10 @@ namespace Lifequest\app\Providers;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\ServiceProvider;
 
+/**
+ * Class AppServiceProvider
+ * @package Lifequest\app\Providers
+ */
 class AppServiceProvider extends ServiceProvider
 {
     /**

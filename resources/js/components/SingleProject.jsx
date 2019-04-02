@@ -1,49 +1,49 @@
 import axios from 'axios'
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 class SingleProject extends Component {
-    constructor (props) {
-        super(props)
+    constructor(props) {
+        super(props);
         this.state = {
             project: {},
             quests: [],
             title: '',
             errors: []
-        }
-        this.handleMarkProjectAsCompleted = this.handleMarkProjectAsCompleted.bind(this)
-        this.handleFieldChange = this.handleFieldChange.bind(this)
-        this.handleAddNewQuest = this.handleAddNewQuest.bind(this)
-        this.hasErrorFor = this.hasErrorFor.bind(this)
+        };
+        this.handleMarkProjectAsCompleted = this.handleMarkProjectAsCompleted.bind(this);
+        this.handleFieldChange = this.handleFieldChange.bind(this);
+        this.handleAddNewQuest = this.handleAddNewQuest.bind(this);
+        this.hasErrorFor = this.hasErrorFor.bind(this);
         this.renderErrorFor = this.renderErrorFor.bind(this)
     }
 
-    handleMarkProjectAsCompleted () {
-        const { history } = this.props
+    handleMarkProjectAsCompleted() {
+        const {history} = this.props;
 
         axios.put(`/api/projects/${this.state.project.id}`)
             .then(response => history.push('/'))
     }
 
-    handleFieldChange (event) {
+    handleFieldChange(event) {
         this.setState({
             title: event.target.value
         })
     }
 
-    handleAddNewQuest (event) {
-        event.preventDefault()
+    handleAddNewQuest(event) {
+        event.preventDefault();
 
         const quest = {
             title: this.state.title,
             project_id: this.state.project.id
-        }
+        };
 
         axios.post('/api/quests', quest)
             .then(response => {
- 
-                 this.setState({
+
+                this.setState({
                     title: ''
-                })
+                });
                 this.setState(prevState => ({
                     quests: prevState.quests.concat(response.data)
                 }))
@@ -55,11 +55,11 @@ class SingleProject extends Component {
             })
     }
 
-    hasErrorFor (field) {
+    hasErrorFor(field) {
         return !!this.state.errors[field]
     }
 
-    renderErrorFor (field) {
+    renderErrorFor(field) {
         if (this.hasErrorFor(field)) {
             return (
                 <span className='invalid-feedback'>
@@ -69,7 +69,7 @@ class SingleProject extends Component {
         }
     }
 
-    handleMarkQuestAsCompleted (questId) {
+    handleMarkQuestAsCompleted(questId) {
         axios.put(`/api/quests/${questId}`).then(response => {
             this.setState(prevState => ({
                 quests: prevState.quests.filter(quest => {
@@ -79,8 +79,8 @@ class SingleProject extends Component {
         })
     }
 
-    componentDidMount () {
-        const projectId = this.props.match.params.id
+    componentDidMount() {
+        const projectId = this.props.match.params.id;
 
         axios.get(`/api/projects/${projectId}`).then(response => {
             this.setState({
@@ -90,8 +90,8 @@ class SingleProject extends Component {
         })
     }
 
-    render () {
-        const { project, quests } = this.state
+    render() {
+        const {project, quests} = this.state;
 
         return (
             <div className='container py-4'>
@@ -110,7 +110,7 @@ class SingleProject extends Component {
                                     Mark as completed
                                 </button>
 
-                                <hr />
+                                <hr/>
                                 <form onSubmit={this.handleAddNewQuest}>
                                     <div className='input-group'>
                                         <input
@@ -125,8 +125,9 @@ class SingleProject extends Component {
                                             <button
                                                 className='btn btn-primary'
                                                 onClick={this.handleAddNewQuest}
-                                        >
-                               Add</button>
+                                            >
+                                                Add
+                                            </button>
                                         </div>
                                         {this.renderErrorFor('title')}
                                     </div>
@@ -141,7 +142,7 @@ class SingleProject extends Component {
 
                                             <button
                                                 className='btn btn-primary btn-sm'
-                                                onClick={this.handleMarkQuestAsCompleted.bind(this,quest.id)}
+                                                onClick={this.handleMarkQuestAsCompleted.bind(this, quest.id)}
                                             >
                                                 Mark as completed
                                             </button>

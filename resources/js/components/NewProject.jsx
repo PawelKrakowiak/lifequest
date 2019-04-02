@@ -1,35 +1,35 @@
 import axios from 'axios'
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 
 class NewProject extends Component {
-    constructor (props) {
-        super(props)
+    constructor(props) {
+        super(props);
         this.state = {
             name: '',
             description: '',
             errors: []
-        }
-        this.handleFieldChange = this.handleFieldChange.bind(this)
-        this.handleCreateNewProject = this.handleCreateNewProject.bind(this)
-        this.hasErrorFor = this.hasErrorFor.bind(this)
+        };
+        this.handleFieldChange = this.handleFieldChange.bind(this);
+        this.handleCreateNewProject = this.handleCreateNewProject.bind(this);
+        this.hasErrorFor = this.hasErrorFor.bind(this);
         this.renderErrorFor = this.renderErrorFor.bind(this)
     }
 
-    handleFieldChange (event) {
+    handleFieldChange(event) {
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
-    handleCreateNewProject (event) {
-        event.preventDefault()
+    handleCreateNewProject(event) {
+        event.preventDefault();
 
-        const { history } = this.props
+        const {history} = this.props;
 
         const project = {
             name: this.state.name,
             description: this.state.description
-        }
+        };
 
         axios.post('/api/projects', project)
             .then(response => {
@@ -43,11 +43,11 @@ class NewProject extends Component {
             })
     }
 
-    hasErrorFor (field) {
+    hasErrorFor(field) {
         return !!this.state.errors[field]
     }
 
-    renderErrorFor (field) {
+    renderErrorFor(field) {
         if (this.hasErrorFor(field)) {
             return (
                 <span className='invalid-feedback'>
@@ -57,7 +57,7 @@ class NewProject extends Component {
         }
     }
 
-    render () {
+    render() {
         return (
             <div className='container py-4'>
                 <div className='row justify-content-center'>

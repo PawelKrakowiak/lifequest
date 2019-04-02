@@ -2,11 +2,20 @@
 
 namespace Lifequest\app\Http\Controllers;
 
+use Illuminate\Database\Eloquent\JsonEncodingException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Lifequest\app\Model\Project;
 
+/**
+ * Class ProjectController
+ * @package Lifequest\app\Http\Controllers
+ */
 class ProjectController extends Controller
 {
+    /**
+     * @return string
+     */
     public function index()
     {
         $projects = Project::where('is_completed', false)
@@ -19,6 +28,10 @@ class ProjectController extends Controller
         return $projects->toJson();
     }
 
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -26,13 +39,19 @@ class ProjectController extends Controller
             'description' => 'required',
         ]);
 
-        $project = Project::create([
+        Project::create([
             'name' => $validatedData['name'],
             'description' => $validatedData['description'],
         ]);
 
         return response()->json('Project created!');
     }
+
+    /**
+     * @param $id
+     * @return string
+     * @throws JsonEncodingException
+     */
 
     public function show($id)
     {
@@ -42,7 +61,10 @@ class ProjectController extends Controller
 
         return $project->toJson();
     }
-
+    /**
+     * @param Project $project
+     * @return JsonResponse
+     */
     public function markAsCompleted(Project $project)
     {
         $project->is_completed = true;

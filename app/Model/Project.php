@@ -16,16 +16,18 @@ use Illuminate\Support\Carbon;
  * @property boolean $isCompleted
  * @property Carbon|null $createdAt
  * @property Carbon|null $updatedAt
- * @property-read Collection|\Lifequest\app\Model\Quest[] $quests
- * @method static Builder|\Lifequest\app\Model\Project newModelQuery()
- * @method static Builder|\Lifequest\app\Model\Project newQuery()
- * @method static Builder|\Lifequest\app\Model\Project query()
- * @method static Builder|\Lifequest\app\Model\Project whereCreatedAt($value)
- * @method static Builder|\Lifequest\app\Model\Project whereDescription($value)
- * @method static Builder|\Lifequest\app\Model\Project whereId($value)
- * @method static Builder|\Lifequest\app\Model\Project whereIsCompleted($value)
- * @method static Builder|\Lifequest\app\Model\Project whereName($value)
- * @method static Builder|\Lifequest\app\Model\Project whereUpdatedAt($value)
+ * @property-read Collection|Quest[] $quests
+ *
+ * @method static Builder|Project newModelQuery()
+ * @method static Builder|Project newQuery()
+ * @method static Builder|Project query()
+ * @method static Builder|Project whereCreatedAt($value)
+ * @method static Builder|Project whereDescription($value)
+ * @method static Builder|Project whereId($value)
+ * @method static Builder|Project whereIsCompleted($value)
+ * @method static Builder|Project whereName($value)
+ * @method static Builder|Project whereUpdatedAt($value)
+ *
  * @mixin Eloquent
  */
 class Project extends Model

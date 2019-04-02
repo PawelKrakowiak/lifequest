@@ -1,16 +1,16 @@
 import axios from 'axios'
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import React, {Component} from 'react'
+import {Link} from 'react-router-dom'
 
 class ProjectsList extends Component {
-    constructor () {
-        super()
+    constructor() {
+        super();
         this.state = {
             projects: []
         }
     }
 
-    componentDidMount () {
+    componentDidMount() {
         axios.get('/api/projects').then(response => {
             this.setState({
                 projects: response.data
@@ -18,8 +18,8 @@ class ProjectsList extends Component {
         })
     }
 
-    render () {
-        const { projects } = this.state
+    render() {
+        const {projects} = this.state;
         return (
             <div className='container py-4'>
                 <div className='row justify-content-center'>
