@@ -21,4 +21,4 @@ Route::post('projects', 'ProjectController@store');
 Route::get('projects/{id}', 'ProjectController@show');
 Route::put('projects/{project}', 'ProjectController@markAsCompleted');
 Route::post('quests', 'QuestController@store');
-Route::put('quests/{questc}', 'QuestController@markAsCompleted');
+Route::put('quests/{quest}', 'QuestController@markAsCompleted');
