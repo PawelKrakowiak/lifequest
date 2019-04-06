@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Providers;
+namespace Lifequest\app\Providers;
 
-use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Broadcast;
+use Illuminate\Support\ServiceProvider;
 
 class BroadcastServiceProvider extends ServiceProvider
 {

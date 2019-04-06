@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Providers;
+namespace Lifequest\app\Providers;
 
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +12,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'App\Model' => 'App\Policies\ModelPolicy',
+        // 'Lifequest\app\Model' => 'Lifequest\app\Policies\ModelPolicy',
     ];
 
     /**
